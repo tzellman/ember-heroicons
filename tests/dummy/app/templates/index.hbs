@@ -1,0 +1,53 @@
+{{page-title "Dummy"}}
+
+<main class="px-8 pt-8">
+    <div class="border-b border-zinc-200 pb-5 flex flex-row justify-between">
+        <h3 class="text-lg font-medium leading-6 text-zinc-900">ember-heroicons</h3>
+        <Input
+            @type="text"
+            @value={{this.filter}}
+            aria-label="Filter"
+            placeholder="Type to filter..."
+            class="min-w-[200px] appearance-none border border-slate-200 p-2 placeholder-slate-400 rounded-md shadow-sm focus:border-purple-500 focus:outline-none focus:ring-purple-500 text-sm"
+        />
+    </div>
+
+    <div class="grid grid-cols-3 gap-8 pt-12" role="tablist" aria-orientation="horizontal">
+        {{#each this.types as |type|}}
+            <div
+                role="tab"
+                aria-selected={{eq this.type type.type}}
+                class={{concat
+                    "relative rounded-xl p-6 text-sm leading-6 transition hover:bg-slate-50 cursor-pointer "
+                    (if (eq this.type type.type) "bg-purple-100")
+                }}
+                {{on "click" (fn (mut this.type) type.type)}}
+            >
+                <h2 role="presentation">
+                    <div class="flex gap-2">
+                        <span class="font-semibold text-slate-900">{{type.type}}</span>
+                        <span class="hidden text-slate-400 lg:block">{{type.blurb}}</span>
+                    </div>
+                </h2>
+                <h3 role="presentation" class="mt-1 text-slate-500 text-left">{{type.description}}</h3>
+            </div>
+        {{/each}}
+    </div>
+
+    {{#if this.icons.length}}
+        <dl class="mt-5 grid grid-cols-4 2xl:grid-cols-6 gap-4">
+            {{#each this.icons as |icon|}}
+                <div class="overflow-hidden bg-white p-4 shadow">
+                    <dt class="flex flex-row items-center space-x-4">
+                        <HeroIcon
+                            @icon={{icon.name}}
+                            @type={{icon.type}}
+                            class={{concat "text-purple-500 " (if (eq this.type "mini") "w-5 h-5" "w-6 h-6")}}
+                        />
+                        <p class="truncate text-sm font-medium text-slat-500">{{icon.name}}</p>
+                    </dt>
+                </div>
+            {{/each}}
+        </dl>
+    {{/if}}
+</main>
