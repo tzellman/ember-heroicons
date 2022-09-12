@@ -81,7 +81,7 @@ module.exports = {
 
     readSVG(file) {
         const data = fs.readFileSync(file, 'utf-8');
-        const doc = htmlparser2.parseDocument(data);
+        const doc = htmlparser2.parseDocument(data, { lowerCaseAttributeNames: false, lowerCaseTags: false });
         return { attributes: doc.children[0].attribs, inner: renderHTML(doc.children[0].children) };
     }
 };

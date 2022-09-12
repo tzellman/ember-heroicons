@@ -24,6 +24,8 @@ export default class HeroIconComponent extends Component {
     setAttributes(element) {
         const svg = this.icon?.data;
         const atts = svg?.attributes ?? {};
-        Object.entries(atts).forEach(([k, v]) => element.setAttribute(k, v));
+        Object.entries(atts)
+            .filter(([k]) => !element.hasAttribute(k))
+            .forEach(([k, v]) => element.setAttribute(k, v));
     }
 }
