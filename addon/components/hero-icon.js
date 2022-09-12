@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import appConfig from 'ember-get-config';
-import { ICONS } from '../utils/icons';
+import { ICONS } from '../utils/heroicons';
 
 export default class HeroIconComponent extends Component {
     get type() {

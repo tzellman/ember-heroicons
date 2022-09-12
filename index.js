@@ -26,7 +26,7 @@ module.exports = {
 
     readConfig() {
         const config = this.app.project.config();
-        const appConfig = config['heroicons'] || {};
+        const appConfig = config['ember-heroicons'] || {};
         const configDefaults = {
             defaultType: 'outline'
         };
@@ -70,7 +70,7 @@ module.exports = {
             mergeTrees([
                 tree,
                 writeFile(
-                    `utils/icons.js`,
+                    `utils/heroicons.js`,
                     `
               export const ICONS = ${JSON.stringify(icons)};
             `

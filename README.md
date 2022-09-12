@@ -37,13 +37,13 @@ By default, all icons for all types will be available within your application. A
 
 If you know you will only be using a subset of icons, then you can greatly reduce the size of your app by customizing the configuration.
 
-You can customize defaults and available icons by adding a `heroicons` configuration object to your application's `environment.js`. As an example:
+You can customize defaults and available icons by adding a `ember-heroicons` configuration object to your application's `environment.js`. As an example:
 
 ```javascript
 module.exports = function (environment) {
     let ENV = {
         // Add options here
-        heroicons: {
+        "ember-heroicons": {
             // default type to use if not specified to the HeroIcon component
             defaultType: "mini",
             // omit matching icons (array of string or RegExp)

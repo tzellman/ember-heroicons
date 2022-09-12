@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
-import { ICONS } from 'ember-heroicons/utils/icons';
+import { ICONS } from 'ember-heroicons/utils/heroicons';
 
 export default class IndexController extends Controller {
     ICONS = ICONS;
