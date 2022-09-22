@@ -11,6 +11,7 @@ module.exports = {
     name: require('./package').name,
     _nodeModulesPath: null,
     _config: null,
+    _options: null,
 
     included(app) {
         this._super.included.apply(this, arguments);
@@ -25,10 +26,14 @@ module.exports = {
     },
 
     readConfig() {
+        // options are from ember-cli-build.js
+        this._options = this.app.options['ember-heroicons'] || {};
+
+        // config is from environment.js
         const config = this.app.project.config();
         const appConfig = config['ember-heroicons'] || {};
         const configDefaults = {
-            defaultType: 'outline'
+            defaultType: this._options.defaultType ?? 'outline'
         };
         const mergedConfig = Object.assign(configDefaults, appConfig);
         this._config = mergedConfig;
@@ -39,9 +44,9 @@ module.exports = {
 
         const toMatcher = (s) => (s instanceof RegExp ? s : new RegExp(`^${s}$`));
 
-        const omit = (this._config.omit ?? []).map((o) => toMatcher(o));
-        const include = (this._config.include ?? []).map((o) => toMatcher(o));
-        const types = (this._config.types ?? []).map((o) => toMatcher(o));
+        const omit = (this._options.omit ?? []).map((o) => toMatcher(o));
+        const include = (this._options.include ?? []).map((o) => toMatcher(o));
+        const types = (this._options.types ?? []).map((o) => toMatcher(o));
         const icons = glob
             .sync(path.join(heroIconsPath, '**', '*.svg'))
             .map((f) =>
@@ -72,6 +77,7 @@ module.exports = {
                 writeFile(
                     `utils/heroicons.js`,
                     `
+              export const DEFAULT_TYPE = '${this._config.defaultType}';
               export const ICONS = ${JSON.stringify(icons)};
             `
                 )

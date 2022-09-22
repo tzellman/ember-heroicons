@@ -35,23 +35,39 @@ The `HeroIcon` component supports the following arguments:
 
 By default, all icons for all types will be available within your application. Additionally, the default icon `type`, if not specified, will be `outline`.
 
-If you know you will only be using a subset of icons, then you can greatly reduce the size of your app by customizing the configuration.
+If you know you will only be using a subset of icons, then you can reduce the size of your app by customizing the configuration.
 
-You can customize defaults and available icons by adding a `ember-heroicons` configuration object to your application's `environment.js`. As an example:
+You can customize defaults and available icons by adding a `ember-heroicons` configuration object to your application's `ember-cli-build.js` and `environment.js` files. As an example:
 
 ```javascript
-module.exports = function (environment) {
-    let ENV = {
-        // Add options here
+// ember-cli-build.js
+module.exports = function (defaults) {
+    let app = new EmberApp(defaults, {
+        // instruct ember-heroicons to include/omit specific icons/sets
         "ember-heroicons": {
             // default type to use if not specified to the HeroIcon component
-            defaultType: "mini",
+            defaultType: "outline",
             // omit matching icons (array of string or RegExp)
             omit: [/chevron/, "camera"],
             // include only certain matching icons (array of string or RegExp)
             include: [/.*/],
             // include only certain types (outline, solid, mini)
             types: ["outline"],
+        },
+    });
+    return app.toTree();
+};
+```
+
+```javascript
+// environment.js
+module.exports = function (environment) {
+    let ENV = {
+        // at runtime, if no type is given, you can specify which type to use
+        "ember-heroicons": {
+            // default type to use if not specified to the HeroIcon component
+            // this takes precedence over the value provided in ember-cli-build.js
+            defaultType: "mini",
         },
     };
     // ...
