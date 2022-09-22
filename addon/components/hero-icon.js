@@ -2,11 +2,16 @@ import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import appConfig from 'ember-get-config';
-import { ICONS } from '../utils/heroicons';
+import { DEFAULT_TYPE, ICONS } from '../utils/heroicons';
 
 export default class HeroIconComponent extends Component {
     get type() {
-        return this.args.type || appConfig?.heroicons?.defaultType || 'outline';
+        let type = this.args.type;
+        if (!type) {
+            const config = appConfig ? appConfig['ember-heroicons'] : {};
+            type = config?.defaultType ?? DEFAULT_TYPE ?? 'outline';
+        }
+        return type;
     }
 
     get icon() {

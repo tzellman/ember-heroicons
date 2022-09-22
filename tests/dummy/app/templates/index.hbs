@@ -16,8 +16,8 @@
                 role="tab"
                 aria-selected={{eq this.type type.type}}
                 class={{concat
-                    "relative rounded-xl p-6 text-sm leading-6 transition hover:bg-slate-50 cursor-pointer "
-                    (if (eq this.type type.type) "bg-purple-100")
+                    "relative rounded-xl p-6 text-sm leading-6 transition cursor-pointer "
+                    (if (eq this.type type.type) "bg-purple-100 hover:bg-purple-200" "hover:bg-slate-50")
                 }}
                 {{on "click" (fn (mut this.type) type.type)}}
             >
@@ -35,7 +35,7 @@
     {{#if this.icons.length}}
         <dl class="mt-5 grid grid-cols-4 2xl:grid-cols-6 gap-4">
             {{#each this.icons as |icon|}}
-                <div class="overflow-hidden bg-white p-4 shadow">
+                <div class="overflow-hidden bg-white p-4 shadow hover:bg-slate-50">
                     <dt class="flex flex-row items-center space-x-4">
                         <HeroIcon
                             @icon={{icon.name}}
