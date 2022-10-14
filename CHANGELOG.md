@@ -1,5 +1,14 @@
 # Changelog
 
+### 0.2.2
+
+-   Updated several dependencies
+    -   heroicons: ^2.0.11 -> ^2.0.12
+    -   autoprefixer: ^10.4.9 -> ^10.4.12
+    -   ember-qunit: ^5.1.5 -> ^6.0.0
+    -   ember-source: ~4.7.0 -> ^4.7.1
+    -   ember-template-lint: ^4.14.0 -> ^4.15.0
+
 ### 0.2.1
 
 -   fix: support both environment.js and ember-cli-build.js options/config
