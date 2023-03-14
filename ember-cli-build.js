@@ -3,12 +3,12 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function (defaults) {
-    let app = new EmberAddon(defaults, {
+    const app = new EmberAddon(defaults, {
         postcssOptions: {
             compile: {
                 cacheInclude: [/.*\.(css|scss|hbs)$/, /.tailwind\.js$/],
                 enabled: true,
-                plugins: [require('tailwindcss')('./config/tailwind.js'), require('autoprefixer')]
+                plugins: [require('tailwindcss')('./tests/dummy/config/tailwind.js'), require('autoprefixer')]
             }
         }
     });

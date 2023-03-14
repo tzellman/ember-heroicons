@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.3.0
+
+-   Updated dependencies
+-   ran ember-cli-update to 4.11
+
 ### 0.2.2
 
 -   Updated several dependencies

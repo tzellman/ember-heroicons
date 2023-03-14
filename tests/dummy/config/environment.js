@@ -1,12 +1,13 @@
 'use strict';
 
 module.exports = function (environment) {
-    let ENV = {
+    const ENV = {
         modulePrefix: 'dummy',
         environment,
         rootURL: '/',
         locationType: 'history',
         EmberENV: {
+            EXTEND_PROTOTYPES: false,
             FEATURES: {
                 // Here you can enable experimental features on an ember canary build
                 // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
@@ -40,7 +41,7 @@ module.exports = function (environment) {
     }
 
     if (environment === 'production') {
-        // here you can enable a production-specific feature'
+        // here you can enable a production-specific feature
         ENV.locationType = 'hash';
         ENV.rootURL = '/ember-heroicons/';
     }
