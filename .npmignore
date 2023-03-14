@@ -22,9 +22,6 @@
 /.travis.yml
 /.watchmanconfig
 /bower.json
-/commitlint.config.js
-/config/ember-try.js
-/config/tailwind.js
 /CONTRIBUTING.md
 /ember-cli-build.js
 /testem.js
@@ -32,6 +29,7 @@
 /yarn-error.log
 /yarn.lock
 .gitkeep
+.tool-versions
 
 # ember-try
 /.node_modules.ember-try/

@@ -25,7 +25,6 @@ module.exports = {
             files: [
                 './.eslintrc.js',
                 './.template-lintrc.js',
-                './commitlint.config.js',
                 './ember-cli-build.js',
                 './index.js',
                 './testem.js',
@@ -40,12 +39,7 @@ module.exports = {
                 browser: false,
                 node: true
             },
-            plugins: ['node'],
-            extends: ['plugin:node/recommended'],
-            rules: {
-                'node/no-extraneous-require': 'off',
-                'node/no-unpublished-require': 'off'
-            }
+            extends: ['plugin:n/recommended']
         },
         {
             // test files
