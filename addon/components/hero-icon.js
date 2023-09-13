@@ -1,4 +1,3 @@
-import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import appConfig from 'ember-get-config';
@@ -25,12 +24,7 @@ export default class HeroIconComponent extends Component {
         return svg?.inner ? htmlSafe(svg.inner) : undefined;
     }
 
-    @action
-    setAttributes(element) {
-        const svg = this.icon?.data;
-        const atts = svg?.attributes ?? {};
-        Object.entries(atts)
-            .filter(([k]) => !element.hasAttribute(k))
-            .forEach(([k, v]) => element.setAttribute(k, v));
+    get attributes() {
+        return this.icon?.data?.attributes ?? {};
     }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.4.0
+
+-   updated to support Ember 5.x
+
 ### 0.3.0
 
 -   Updated dependencies
