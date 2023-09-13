@@ -1,7 +1,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
+const { globSync } = require('glob');
 const writeFile = require('broccoli-file-creator');
 const mergeTrees = require('broccoli-merge-trees');
 const renderHTML = require('dom-serializer').default;
@@ -47,8 +47,7 @@ module.exports = {
         const omit = (this._options.omit ?? []).map((o) => toMatcher(o));
         const include = (this._options.include ?? []).map((o) => toMatcher(o));
         const types = (this._options.types ?? []).map((o) => toMatcher(o));
-        const icons = glob
-            .sync(path.join(heroIconsPath, '**', '*.svg'))
+        const icons = globSync(path.join(heroIconsPath, '**', '*.svg'))
             .map((f) =>
                 f
                     .replace(heroIconsPath, '')
