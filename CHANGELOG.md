@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.5.0
+
+-   updates to support micro icons now provided by heroicons
+-   update to latest Ember (5.6) via ember-cli-update
+-   update dependencies and bump version
+
 ### 0.4.0
 
 -   updated to support Ember 5.x
