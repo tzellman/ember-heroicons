@@ -44,6 +44,11 @@ module.exports = {
 
         const toMatcher = (s) => (s instanceof RegExp ? s : new RegExp(`^${s}$`));
 
+        const solidSizeToType = {
+            '16': 'micro',
+            '20': 'mini',
+            '24': 'solid'
+        };
         const omit = (this._options.omit ?? []).map((o) => toMatcher(o));
         const include = (this._options.include ?? []).map((o) => toMatcher(o));
         const types = (this._options.types ?? []).map((o) => toMatcher(o));
@@ -58,7 +63,7 @@ module.exports = {
             .map((o) => ({
                 ...o,
                 name: o.name.replace(/[.]svg$/, ''),
-                type: o.type === 'solid' ? (o.size === '20' ? 'mini' : 'solid') : 'outline'
+                type: o.type === 'solid' ? solidSizeToType[o.size] : 'outline'
             }))
             .filter((o) => !omit.some((r) => r.test(o.name)))
             .filter((o) => !include.length || include.some((r) => r.test(o.name)))

@@ -2,10 +2,10 @@ module.exports = {
     content: ['./tests/**/*.{hbs,js}'],
     safelist: [
         {
-            pattern: /w-[56]/
+            pattern: /w-[456]/
         },
         {
-            pattern: /h-[56]/
+            pattern: /h-[456]/
         }
     ]
 };

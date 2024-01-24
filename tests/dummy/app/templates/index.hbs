@@ -10,7 +10,7 @@
         />
     </div>
 
-    <div class="grid grid-cols-3 gap-8 pt-12" role="tablist" aria-orientation="horizontal">
+    <div class="grid grid-cols-4 gap-4 pt-12" role="tablist" aria-orientation="horizontal">
         {{#each this.types as |type|}}
             <div
                 role="tab"
@@ -40,7 +40,7 @@
                         <HeroIcon
                             @icon={{icon.name}}
                             @type={{icon.type}}
-                            class={{concat "text-purple-500 " (if (eq this.type "mini") "w-5 h-5" "w-6 h-6")}}
+                            class={{concat "text-purple-500 " this.typeSizeClasses}}
                         />
                         <p class="truncate text-sm font-medium text-slat-500">{{icon.name}}</p>
                     </dt>

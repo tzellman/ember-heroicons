@@ -29,7 +29,7 @@ The basic usage:
 The `HeroIcon` component supports the following arguments:
 
 -   `@icon` - the name of the icon to render
--   `@type` - one of `outline`, `solid` or `mini`
+-   `@type` - one of `outline`, `solid`, `mini` or `micro`
 
 ### Custom configuration
 
@@ -51,7 +51,7 @@ module.exports = function (defaults) {
             omit: [/chevron/, "camera"],
             // include only certain matching icons (array of string or RegExp)
             include: [/.*/],
-            // include only certain types (outline, solid, mini)
+            // include only certain types (outline, solid, mini, micro)
             types: ["outline"],
         },
     });
