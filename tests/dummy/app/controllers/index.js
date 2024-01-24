@@ -19,6 +19,17 @@ export default class IndexController extends Controller {
         return icons;
     }
 
+    get typeSizeClasses() {
+        switch (this.type) {
+            case 'mini':
+                return 'w-5 h-5';
+            case 'micro':
+                return 'w-4 h-4';
+            default:
+                return 'w-6 h-6';
+        }
+    }
+
     get types() {
         return [
             {
@@ -35,6 +46,11 @@ export default class IndexController extends Controller {
                 type: 'mini',
                 blurb: '20x20, Solid fill',
                 description: 'For smaller elements like buttons, form elements, and to support text.'
+            },
+            {
+                type: 'micro',
+                blurb: '16x16, Solid fill',
+                description: 'For even smaller elements like buttons, form elements, and to support text.'
             }
         ];
     }
