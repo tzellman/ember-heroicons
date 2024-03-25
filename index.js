@@ -52,10 +52,16 @@ module.exports = {
         const omit = (this._options.omit ?? []).map((o) => toMatcher(o));
         const include = (this._options.include ?? []).map((o) => toMatcher(o));
         const types = (this._options.types ?? []).map((o) => toMatcher(o));
-        const icons = globSync(path.join(heroIconsPath, '**', '*.svg'))
+        // glob always expects path separators to be forward slashes, even on systems where the separator
+        // is a back slash. So we let path.join do what it does, and then we change instances of \ to /.
+        const safeGlobPath = path.join(heroIconsPath, '**', '*.svg').replace(/\\/g, '/');
+        const icons = globSync(safeGlobPath)
             .map((f) =>
                 f
                     .replace(heroIconsPath, '')
+                    // Oddly enough glob return paths with the system separator. So in order to be able
+                    // to split on '/' we have to once again change instances of \ to /
+                    .replace(/\\/g, '/')
                     .split('/')
                     .filter((f) => f)
             )
