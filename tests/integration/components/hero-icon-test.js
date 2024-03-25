@@ -9,5 +9,6 @@ module('Integration | Component | hero-icon', function (hooks) {
     test('it renders', async function (assert) {
         await render(hbs`<HeroIcon @icon="film"/>`);
         assert.dom('svg').exists();
+        assert.dom('path').exists();
     });
 });
